@@ -46,6 +46,8 @@ func rcv(p [2]int, w int, board [][]int) (int, int) {
 
 func main() {
 	rd := bufio.NewReader(os.Stdin)
+	wr := bufio.NewWriter(os.Stdout)
+	defer wr.Flush()
 
 	var n int
 	fmt.Fscanln(rd, &n)
@@ -69,6 +71,6 @@ func main() {
 	}
 
 	w, b := rcv([2]int{0, 0}, n, board)
-	fmt.Println(w)
-	fmt.Println(b)
+	wr.WriteString(strconv.Itoa(w) + "\n")
+	wr.WriteString(strconv.Itoa(b))
 }
