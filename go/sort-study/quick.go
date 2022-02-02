@@ -1,15 +1,6 @@
-package main
+package sort_study
 
-import "fmt"
-
-type iList []int
-
-func (list *iList) Swap(i int, j int) {
-	fmt.Printf("[%d, %d] Swap ", (*list)[i], (*list)[j])
-	(*list)[i], (*list)[j] = (*list)[j], (*list)[i]
-}
-
-func (list *iList) Quick() {
+func (list *IList) Quick() {
 	if len(*list) < 2 {
 		return
 	}
@@ -23,7 +14,7 @@ func (list *iList) Quick() {
 	right.Quick()
 }
 
-func (list *iList) Divide() int {
+func (list *IList) Divide() int {
 	pivot := (*list)[0]
 
 	low := 1
@@ -44,23 +35,11 @@ func (list *iList) Divide() int {
 		(*list).Swap(low, high)
 	}
 
-	fmt.Printf("\n")
-
-	fmt.Println("divide:", *list)
-
 	(*list).Swap(0, low)
-
-	fmt.Printf("\n")
-
-	fmt.Println("Swap pivot:", *list)
-
-	fmt.Printf("\n")
 
 	return low
 }
 
-func main() {
-	arr := iList{4, 0, 3, 7, 2, 1, 9, 6, 5, 8}
+func QuickSort(arr IList) {
 	arr.Quick()
-	fmt.Println(arr)
 }

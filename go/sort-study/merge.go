@@ -1,22 +1,14 @@
-package main
-
-import (
-	"fmt"
-)
-
-type iList []int
+package sort_study
 
 var cnt = 0
 
-func (list *iList) Merge() {
+func (list *IList) Merge() {
 	cnt += 1
 	l := len(*list)
 	r := (l / 2) + (l % 2)
 
 	left := (*list)[0:r]
 	right := (*list)[r:l]
-
-	fmt.Printf("left: %d, right: %d\n", left, right)
 
 	if l > 2 {
 		left.Merge()
@@ -46,15 +38,9 @@ func (list *iList) Merge() {
 		}
 	}
 
-	fmt.Printf("merged: %d\n", temp)
-
 	*list = temp
 }
 
-func main() {
-	arr := iList{4, 0, 3, 10, 7, 2, 1, 9, 6, 5, 8}
-
+func MergeSort(arr IList) {
 	arr.Merge()
-
-	fmt.Println(arr)
 }
